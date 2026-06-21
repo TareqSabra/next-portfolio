@@ -26,14 +26,14 @@ export default function HeroSection() {
               <h1
                 style={{
                   fontFamily: "var(--font-display)",
-                  fontSize: "4.5rem",
-                  fontWeight: 700,
-                  lineHeight: 1.1,
+                  fontSize: "var(--text-6xl)",
+                  fontWeight: "var(--font-weight-bold)",
+                  lineHeight: "var(--leading-tight)",
                   letterSpacing: "-1.5px",
-                  marginBottom: "8px",
+                  marginBottom: "var(--spacing-xs)",
                 }}
               >
-                <span style={{ color: "#e29b9f" }}>Hey There,</span>
+                <span style={{ color: "var(--accent-pink-primary)" }}>Hey There,</span>
                 <br />
                 <span style={{ color: "var(--text-primary)" }}>
                   I’m Tareq Sabra!
@@ -43,13 +43,13 @@ export default function HeroSection() {
             <FadeIn delay={0.3} direction="down">
               <h2
                 style={{
-                  fontSize: "1.25rem",
-                  color: "#e29b9f",
-                  fontWeight: 600,
+                  fontSize: "var(--text-xl)",
+                  color: "var(--accent-pink-primary)",
+                  fontWeight: "var(--font-weight-semibold)",
                   textTransform: "uppercase",
                   letterSpacing: "1px",
-                  marginTop: "20px",
-                  marginBottom: "8px",
+                  marginTop: "var(--spacing-lg)",
+                  marginBottom: "var(--spacing-xs)",
                 }}
               >
                 Full-Stack Developer
@@ -57,8 +57,8 @@ export default function HeroSection() {
               <p
                 style={{
                   color: "var(--text-secondary)",
-                  fontSize: "1.1rem",
-                  lineHeight: 1.7,
+                  fontSize: "var(--text-lg)",
+                  lineHeight: "var(--leading-relaxed)",
                   maxWidth: "550px",
                 }}
               >
@@ -69,13 +69,13 @@ export default function HeroSection() {
           </div>
 
           <FadeIn delay={0.8} direction="left">
-            <div style={{ display: "flex", gap: "16px", marginTop: "12px" }}>
+            <div style={{ display: "flex", gap: "var(--spacing-md)", marginTop: "var(--spacing-sm)" }}>
               <a href="/dashboard" style={{ textDecoration: "none" }}>
                 <Button
                   variant="primary"
                   style={{
-                    background: "linear-gradient(135deg, #e29b9f, #ff8a9f)",
-                    boxShadow: "0 4px 20px rgba(226, 155, 159, 0.2)",
+                    background: "linear-gradient(135deg, var(--accent-pink-primary), var(--accent-pink-secondary))",
+                    boxShadow: "var(--shadow-glow-pink)",
                   }}
                 >
                   View Live Demo

@@ -59,8 +59,7 @@ export default function ArchitectureSection({
               fontSize: "1rem",
             }}
           >
-            Explore the actual, live source code files of this Next.js
-            Multi-Zone microfrontend monorepo
+            A look under the hood of my portfolio website
           </p>
         </FadeIn>
 

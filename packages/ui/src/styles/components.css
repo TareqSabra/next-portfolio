@@ -136,6 +136,13 @@
   margin-bottom: 20px;
 }
 
+.portfolio-body {
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
 /* --- Scroll Snapping Layout System --- */
 
 .snap-container {
@@ -341,7 +348,7 @@
   position: absolute;
   width: 440px;
   height: 440px;
-  background: #e29b9f; /* Premium soft pink from reference */
+  background: var(--accent-pink-primary); /* Premium soft pink from design system */
   border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
   animation: blob-bounce 12s ease-in-out infinite alternate;
   z-index: 1;
@@ -450,7 +457,32 @@
   line-height: 1.25;
 }
 
-@media (max-width: 992px) {
+/* --- Responsive Breakpoints and Media Queries --- */
+
+/* Disable scroll-snapping and 100vh height constraint on tablet & mobile */
+@media (max-width: 1024px) {
+  .portfolio-body {
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  .snap-container {
+    height: auto;
+    overflow-y: visible;
+    scroll-snap-type: none;
+  }
+  
+  .snap-section {
+    height: auto;
+    min-height: 100vh;
+    scroll-snap-align: none;
+    padding: 100px 24px 60px 24px;
+  }
+  
+  .scroll-indicator {
+    display: none !important;
+  }
+  
   .hero-layout-premium {
     flex-direction: column-reverse;
     text-align: center;
@@ -464,6 +496,12 @@
   .hero-right-premium {
     width: 320px;
     height: 320px;
+    margin: 0 auto;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: none; /* Prevent flexbox from collapsing this to 0 height in column-reverse */
   }
   
   .hero-blob {
@@ -472,8 +510,11 @@
   }
   
   .hero-portrait-container {
+    position: relative !important; /* Force relative layout flow on mobile so it occupies space */
     width: 300px;
     height: 320px;
+    margin: 0 auto;
+    z-index: 2;
   }
   
   .floating-speech {
@@ -494,29 +535,41 @@
   .floating-badge-text {
     font-size: 0.55rem;
   }
+  
+  .about-layout {
+    flex-direction: column !important;
+    gap: 40px;
+    align-items: center !important;
+  }
 }
 
-/* Responsive Rules for Small Devices */
+/* Mobile responsive typography and navigation tuning */
 @media (max-width: 768px) {
-  .snap-section {
-    padding: 100px 32px 32px 32px;
+  .hero-left-premium h1 {
+    font-size: 2.8rem !important;
+    line-height: 1.2 !important;
+    letter-spacing: -1px !important;
+  }
+  
+  .snap-section h2 {
+    font-size: 2rem !important;
   }
   
   .portfolio-header {
-    padding: 0 24px;
+    padding: 0 20px;
     height: 70px;
   }
   
   .portfolio-nav {
-    gap: 16px;
+    gap: 12px;
+  }
+  
+  .portfolio-nav-link {
+    font-size: 0.85rem;
   }
   
   .portfolio-logo {
-    font-size: 1.25rem;
-  }
-  
-  .scroll-indicator {
-    display: none; /* Hide indicator on short mobile screens */
+    font-size: 1.15rem;
   }
 }
 
@@ -632,8 +685,8 @@
 }
 
 .explorer-item.active {
-  background: rgba(226, 155, 159, 0.1);
-  color: #e29b9f;
+  background: color-mix(in srgb, var(--accent-pink-primary) 10%, transparent);
+  color: var(--accent-pink-primary);
   font-weight: 500;
 }
 
@@ -667,7 +720,7 @@
   padding: 0 16px;
   border-right: 1px solid var(--border-muted);
   background: rgba(15, 15, 20, 0.9);
-  color: #e29b9f;
+  color: var(--accent-pink-primary);
   font-size: 0.8rem;
   font-weight: 500;
 }
@@ -830,6 +883,16 @@
   background: rgba(255, 255, 255, 0.08);
   border-color: rgba(255, 255, 255, 0.3);
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.15);
+}
+
+/* Hide scrollbar utility for PDF viewer */
+.pdf-no-scrollbar {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+.pdf-no-scrollbar::-webkit-scrollbar {
+  display: none !important;
 }
 
 

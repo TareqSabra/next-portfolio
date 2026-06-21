@@ -21,21 +21,21 @@ export default function AboutSection() {
             <h2
               style={{
                 fontFamily: "var(--font-display)",
-                fontSize: "2.8rem",
+                fontSize: "var(--text-4xl)",
                 color: "var(--text-primary)",
-                fontWeight: 700,
+                fontWeight: "var(--font-weight-bold)",
                 letterSpacing: "-1px",
-                marginBottom: "20px",
+                marginBottom: "var(--spacing-lg)",
               }}
             >
-              About <span style={{ color: "#e29b9f" }}>Me</span>
+              About <span style={{ color: "var(--accent-pink-primary)" }}>Me</span>
             </h2>
             <p
               style={{
                 color: "var(--text-secondary)",
-                fontSize: "1.1rem",
-                lineHeight: 1.8,
-                marginBottom: "16px",
+                fontSize: "var(--text-lg)",
+                lineHeight: "var(--leading-relaxed)",
+                marginBottom: "var(--spacing-md)",
               }}
             >
               I am a frontend-focused engineer passionate about building
@@ -49,9 +49,9 @@ export default function AboutSection() {
             <p
               style={{
                 color: "var(--text-secondary)",
-                fontSize: "1.1rem",
-                lineHeight: 1.8,
-                marginBottom: "16px",
+                fontSize: "var(--text-lg)",
+                lineHeight: "var(--leading-relaxed)",
+                marginBottom: "var(--spacing-md)",
               }}
             >
               Currently, I am expanding my expertise to backend development with
@@ -63,8 +63,8 @@ export default function AboutSection() {
             <p
               style={{
                 color: "var(--text-secondary)",
-                fontSize: "1.1rem",
-                lineHeight: 1.8,
+                fontSize: "var(--text-lg)",
+                lineHeight: "var(--leading-relaxed)",
               }}
             >
               Beyond core coding, I thrive on continuous learning and am always

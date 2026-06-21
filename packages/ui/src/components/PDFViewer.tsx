@@ -45,17 +45,34 @@ export const PDFViewer = ({ pdfUrl }: { pdfUrl: string }) => {
                   <Viewport
                     documentId={activeDocumentId}
                     style={{
-                      backgroundColor: "#f1f3f5",
+                      backgroundColor: "transparent",
                     }}
+                    className="pdf-no-scrollbar"
                   >
                     <Scroller
                       documentId={activeDocumentId}
+                      className="pdf-no-scrollbar"
                       renderPage={({ width, height, pageIndex }) => (
-                        <div style={{ width, height }}>
+                        <div
+                          style={{
+                            width: "100%",
+                            height: "auto",
+                            maxWidth: `${width}px`,
+                            aspectRatio: `${width} / ${height}`,
+                            margin: "0 auto",
+                            padding: "var(--spacing-xs)",
+                          }}
+                        >
                           {/* The RenderLayer is responsible for drawing the page */}
                           <RenderLayer
                             documentId={activeDocumentId}
                             pageIndex={pageIndex}
+                            style={{
+                              width: "100%",
+                              height: "auto",
+                              borderRadius: "var(--radius-sm)",
+                              boxShadow: "var(--shadow-lg)",
+                            }}
                           />
                         </div>
                       )}

@@ -18,14 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        style={{
-          height: "100vh",
-          overflow: "hidden",
-          display: "flex",
-          flexDirection: "column",
-        }}
-      >
+      <body className="portfolio-body">
         <main style={{ flex: 1, width: "100%" }}>{children}</main>
       </body>
     </html>
