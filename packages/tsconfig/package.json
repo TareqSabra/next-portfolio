@@ -1,0 +1,9 @@
+{
+  "name": "@portfolio/tsconfig",
+  "version": "0.0.0",
+  "private": true,
+  "exports": {
+    "./nextjs.json": "./nextjs.json",
+    "./react-library.json": "./react-library.json"
+  }
+}

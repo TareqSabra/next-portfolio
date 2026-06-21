@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;700&display=swap');
+
+:root {
+  /* Harmonious Dark Mode Color Palette */
+  --bg-primary: #0a0a0c;
+  --bg-secondary: rgba(20, 20, 25, 0.7);
+  --bg-tertiary: rgba(30, 30, 40, 0.5);
+  
+  --accent-neon-blue: #00f2fe;
+  --accent-neon-purple: #4facfe;
+  --accent-neon-pink: #ff007f;
+  
+  --text-primary: #f3f4f6;
+  --text-secondary: #9ca3af;
+  --text-muted: #6b7280;
+  
+  --border-glow: rgba(0, 242, 254, 0.2);
+  --border-muted: rgba(255, 255, 255, 0.08);
+  
+  --glass-bg: rgba(15, 15, 25, 0.65);
+  --glass-blur: blur(16px);
+  
+  /* Fonts */
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-sans: 'Outfit', system-ui, sans-serif;
+  
+  /* Transitions */
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-glow: box-shadow 0.5s ease, border-color 0.5s ease;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
