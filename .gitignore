@@ -28,6 +28,9 @@ dist/
 *.sln
 *.sw?
 
+# Visitor IP Logs
+data/visits.json
+
 # OS Files
 .DS_Store
 Thumbs.db

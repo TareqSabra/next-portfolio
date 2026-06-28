@@ -18,6 +18,7 @@ interface InvoicingPanelProps {
 }
 
 import { SuccessModal } from "./SuccessModal";
+import { INSURANCE_FEE, CUSTOMS_FEE, FALLBACK_RATES, CURRENCY_CONFIG } from "../constants/financial";
 
 export const InvoicingPanel: React.FC<InvoicingPanelProps> = ({
   baseRatePerTEU,
@@ -29,34 +30,30 @@ export const InvoicingPanel: React.FC<InvoicingPanelProps> = ({
   const [insurance, setInsurance] = React.useState<boolean>(true);
   const [showSuccess, setShowSuccess] = React.useState(false);
 
-  const portInsuranceFee = insurance ? 250 : 0;
-  const customsClearingFee = 150;
+  const portInsuranceFee = insurance ? INSURANCE_FEE : 0;
+  const customsClearingFee = CUSTOMS_FEE;
   const totalUSD = teus * (baseRatePerTEU + portInsuranceFee + customsClearingFee);
 
-  const btcPrice = rates?.bitcoin?.usd || 90000;
-  const ethPrice = rates?.ethereum?.usd || 3200;
-  const usdCoinPrice = rates?.["usd-coin"]?.usd || 1;
-  const eurRate = rates?.eur || 0.92;
+  const btcPrice = rates?.bitcoin?.usd || FALLBACK_RATES.bitcoin.usd;
+  const ethPrice = rates?.ethereum?.usd || FALLBACK_RATES.ethereum.usd;
+  const usdCoinPrice = rates?.["usd-coin"]?.usd || FALLBACK_RATES["usd-coin"].usd;
+  const eurRate = rates?.eur || FALLBACK_RATES.eur;
 
   const totalBTC = totalUSD / btcPrice;
   const totalETH = totalUSD / ethPrice;
   const totalUSDC = totalUSD / usdCoinPrice;
   const totalEUR = totalUSD * eurRate;
 
-  let localCurrencySymbol = "¥";
+  const localCurrencySymbol = CURRENCY_CONFIG[currencyCode]?.symbol || "¥";
   let localConversionRate = 7.25;
 
   if (currencyCode === "EUR") {
-    localCurrencySymbol = "€";
     localConversionRate = eurRate;
   } else if (currencyCode === "SGD") {
-    localCurrencySymbol = "S$";
     localConversionRate = 1.35;
   } else if (currencyCode === "CNY") {
-    localCurrencySymbol = "¥";
     localConversionRate = 7.25;
   } else if (currencyCode === "USD") {
-    localCurrencySymbol = "$";
     localConversionRate = 1;
   }
 

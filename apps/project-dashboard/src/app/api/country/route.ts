@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import axios from "axios";
+import { COUNTRY_NAME_MAP } from "../../../constants/countries";
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
@@ -10,16 +11,9 @@ export async function GET(request: Request) {
   }
 
   // Load API key from server environment (secure, not exposed to browser!)
-  const apiKey = process.env.REST_COUNTRIES_API_KEY || "rc_live_24c5ffdc20844da68782846f51048715";
+  const apiKey = process.env.REST_COUNTRIES_API_KEY || "";
 
-  const nameMap: Record<string, string> = {
-    CN: "china",
-    NL: "netherlands",
-    SG: "singapore",
-    US: "united states",
-  };
-
-  const queryName = nameMap[code.toUpperCase()] || code;
+  const queryName = COUNTRY_NAME_MAP[code.toUpperCase()] || code;
 
   try {
     const { data } = await axios.get(

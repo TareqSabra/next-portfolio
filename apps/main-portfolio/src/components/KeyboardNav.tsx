@@ -2,14 +2,7 @@
 
 import * as React from "react";
 import { motion } from "motion/react";
-
-const SECTIONS = [
-  { id: "hero", label: "Home" },
-  { id: "about", label: "About" },
-  { id: "projects", label: "Work" },
-  { id: "contact", label: "Connect" },
-  { id: "architecture", label: "Stack" },
-];
+import { SECTIONS } from "../constants/navigation";
 
 export default function KeyboardNav() {
   const [activeId, setActiveId] = React.useState("hero");

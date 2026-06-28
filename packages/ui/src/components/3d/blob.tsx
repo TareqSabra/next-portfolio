@@ -8,12 +8,9 @@ import {
   GradientTexture,
 } from "@react-three/drei";
 
-export const Blob = () => {
-  // Theme color constants matching packages/ui/src/styles/tokens.css
-  const pinkPrimary = "#e29b9f";    // var(--accent-pink-primary)
-  const pinkSecondary = "#ff8a9f";  // var(--accent-pink-secondary)
-  const neonBlue = "#00f2fe";       // var(--accent-neon-blue)
+import { COLORS } from "../../constants/colors";
 
+export const Blob = () => {
   return (
     <div
       style={{
@@ -29,15 +26,15 @@ export const Blob = () => {
         <ambientLight intensity={1.8} />
 
         {/* Pink key light matching the primary button gradient */}
-        <pointLight position={[10, 10, 10]} intensity={2.5} color={pinkSecondary} />
+        <pointLight position={[10, 10, 10]} intensity={2.5} color={COLORS.pinkSecondary} />
 
         {/* Neon blue fill light matching the background accent blue */}
-        <pointLight position={[-10, -10, -10]} intensity={2} color={neonBlue} />
+        <pointLight position={[-10, -10, -10]} intensity={2} color={COLORS.neonBlue} />
         <Sphere args={[1, 100, 200]} scale={3}>
           <MeshDistortMaterial attach="material" distort={0.55} speed={3}>
             <GradientTexture
               stops={[0, 1]}
-              colors={[pinkPrimary, pinkSecondary]}
+              colors={[COLORS.pinkPrimary, COLORS.pinkSecondary]}
               size={1024}
             />
           </MeshDistortMaterial>

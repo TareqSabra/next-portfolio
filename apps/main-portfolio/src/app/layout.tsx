@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import KeyboardNav from "../components/KeyboardNav";
+import { VisitNotify } from "../components/visit-notify";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
@@ -26,6 +27,7 @@ export default function RootLayout({
         }}
       >
         <KeyboardNav />
+        <VisitNotify />
         <main style={{ flex: 1, minWidth: 0 }}>{children}</main>
       </body>
     </html>

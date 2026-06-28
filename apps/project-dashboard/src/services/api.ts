@@ -12,7 +12,7 @@ export const getCountry = async (code: string) => {
  * @param city City name (e.g., 'Rotterdam', 'Los Angeles')
  */
 export const getWeather = async (city: string) => {
-  const apiKey = process.env.NEXT_PUBLIC_OPENWEATHER_API_KEY || "2864f6b534088764a08770fb4cf65cda";
+  const apiKey = process.env.NEXT_PUBLIC_OPENWEATHER_API_KEY || "";
   const queryCity = city === "Los Angeles" ? "Los Angeles,US" : city;
   const { data } = await apiClient.get(
     `https://api.openweathermap.org/data/2.5/weather`,

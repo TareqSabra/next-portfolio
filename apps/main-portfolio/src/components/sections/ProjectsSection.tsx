@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Card } from "@portfolio/ui";
+import { Card, ScrollIndicator } from "@portfolio/ui";
 
 export default function ProjectsSection() {
   return (
@@ -30,14 +30,7 @@ export default function ProjectsSection() {
         />
       </div>
 
-      {/* Scroll Indicator to Contact */}
-      <a href="#contact" className="scroll-indicator">
-        <span>Get in touch</span>
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <line x1="12" y1="5" x2="12" y2="19"></line>
-          <polyline points="19 12 12 19 5 12"></polyline>
-        </svg>
-      </a>
+      <ScrollIndicator href="#contact" label="Get in touch" />
     </section>
   );
 }

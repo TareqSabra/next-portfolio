@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { FadeIn } from "@portfolio/ui";
+import { FadeIn, ScrollIndicator } from "@portfolio/ui";
 
 interface HighlightedFile {
   name: string;
@@ -215,23 +215,7 @@ export default function ArchitectureSection({
         </FadeIn>
       </div>
 
-      {/* Back to top */}
-      <a href="#hero" className="scroll-indicator">
-        <span>Back to top</span>
-        <svg
-          width="20"
-          height="20"
-          viewBox="0 0 24 24"
-          fill="none"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          style={{ transform: "rotate(180deg)" }}
-        >
-          <line x1="12" y1="5" x2="12" y2="19"></line>
-          <polyline points="19 12 12 19 5 12"></polyline>
-        </svg>
-      </a>
+      <ScrollIndicator href="#hero" label="Back to top" direction="up" />
     </section>
   );
 }

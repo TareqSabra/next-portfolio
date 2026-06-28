@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { Button } from "@portfolio/ui";
+import { Button, ScrollIndicator } from "@portfolio/ui";
 import { motion, AnimatePresence } from "motion/react";
 
 type Status = "idle" | "loading" | "success" | "error";
@@ -155,22 +155,7 @@ export default function ContactSection() {
         </div>
       </motion.form>
 
-      {/* Scroll down to Architecture */}
-      <a href="#architecture" className="scroll-indicator">
-        <span>How it&apos;s built</span>
-        <svg
-          width="20"
-          height="20"
-          viewBox="0 0 24 24"
-          fill="none"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <line x1="12" y1="5" x2="12" y2="19"></line>
-          <polyline points="19 12 12 19 5 12"></polyline>
-        </svg>
-      </a>
+      <ScrollIndicator href="#architecture" label="How it's built" />
     </section>
   );
 }

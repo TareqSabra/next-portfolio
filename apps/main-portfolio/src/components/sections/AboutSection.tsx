@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { FadeIn } from "@portfolio/ui";
+import { FadeIn, ScrollIndicator } from "@portfolio/ui";
 import { PDFViewer } from "@portfolio/ui/pdf";
 
 export default function AboutSection() {
@@ -79,22 +79,7 @@ export default function AboutSection() {
         </div>
       </div>
 
-      {/* Scroll down to Projects */}
-      <a href="#projects" className="scroll-indicator">
-        <span>Featured Work</span>
-        <svg
-          width="20"
-          height="20"
-          viewBox="0 0 24 24"
-          fill="none"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <line x1="12" y1="5" x2="12" y2="19"></line>
-          <polyline points="19 12 12 19 5 12"></polyline>
-        </svg>
-      </a>
+      <ScrollIndicator href="#projects" label="Featured Work" />
     </section>
   );
 }

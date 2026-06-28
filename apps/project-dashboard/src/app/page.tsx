@@ -9,6 +9,7 @@ import { PortAdvisory } from "../components/PortAdvisory";
 import { CustomsVerification } from "../components/CustomsVerification";
 import { VesselTelemetry } from "../components/VesselTelemetry";
 import { ROUTES } from "../constants";
+import { ROUTE_BASE_RATES } from "../constants/rates";
 import {
   useCountry,
   useWeather,
@@ -45,12 +46,7 @@ export default function LogisticsDashboard() {
   const { activeData: activeOrigin } = useCountry(originPort.countryCode);
   const { activeData: activeDest } = useCountry(destinationPort.countryCode);
 
-  const baseRatePerTEU =
-    selectedRouteId === "route-1"
-      ? 3400
-      : selectedRouteId === "route-2"
-        ? 4800
-        : 4200;
+  const baseRatePerTEU = ROUTE_BASE_RATES[selectedRouteId] || 4200;
 
   const handleRefreshAll = () => {
     refetchWeather();

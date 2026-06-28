@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import Image from "next/image";
-import { Button, FadeIn } from "@portfolio/ui";
+import { Button, FadeIn, ScrollIndicator } from "@portfolio/ui";
 import dynamic from "next/dynamic";
 const Blob = dynamic(() => import("@portfolio/ui/3d").then((mod) => mod.Blob), {
   ssr: false,
@@ -100,22 +100,7 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* Bouncing Scroll Down Indicator */}
-      <a href="#about" className="scroll-indicator">
-        <span>Scroll down</span>
-        <svg
-          width="20"
-          height="20"
-          viewBox="0 0 24 24"
-          fill="none"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <line x1="12" y1="5" x2="12" y2="19"></line>
-          <polyline points="19 12 12 19 5 12"></polyline>
-        </svg>
-      </a>
+      <ScrollIndicator href="#about" label="Scroll down" />
     </section>
   );
 }
