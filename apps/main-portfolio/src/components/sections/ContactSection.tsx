@@ -56,12 +56,12 @@ export default function ContactSection() {
           fontSize: "2.5rem",
           color: "var(--text-primary)",
           fontWeight: 700,
-          letterSpacing: "-0.5px",
+          letterSpacing: "-0.03125rem",
         }}
       >
         Let&apos;s Connect
       </h2>
-      <p style={{ color: "var(--text-secondary)", marginTop: "8px" }}>
+      <p style={{ color: "var(--text-secondary)", marginTop: "0.5rem" }}>
         Have a project in mind or want to collaborate? Send a message directly.
       </p>
 
@@ -91,7 +91,7 @@ export default function ContactSection() {
         />
         <textarea
           className="contact-input"
-          style={{ minHeight: "120px", resize: "none" }}
+          style={{ minHeight: "7.5rem", resize: "none" }}
           placeholder="Your Message"
           required
           value={message}
@@ -103,8 +103,8 @@ export default function ContactSection() {
           style={{
             display: "flex",
             alignItems: "center",
-            gap: "12px",
-            marginTop: "8px",
+            gap: "0.75rem",
+            marginTop: "0.5rem",
           }}
         >
           <Button

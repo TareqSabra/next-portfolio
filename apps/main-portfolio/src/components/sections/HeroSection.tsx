@@ -44,7 +44,7 @@ export default function HeroSection() {
                   color: "var(--accent-pink-primary)",
                   fontWeight: "var(--font-weight-semibold)",
                   textTransform: "uppercase",
-                  letterSpacing: "1px",
+                  letterSpacing: "0.0625rem",
                   marginTop: "var(--spacing-lg)",
                   marginBottom: "var(--spacing-xs)",
                 }}
@@ -56,7 +56,7 @@ export default function HeroSection() {
                   color: "var(--text-secondary)",
                   fontSize: "var(--text-lg)",
                   lineHeight: "var(--leading-relaxed)",
-                  maxWidth: "550px",
+                  maxWidth: "34.375rem",
                 }}
               >
                 Frontend focused, passionate about building scalable,

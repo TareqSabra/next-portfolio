@@ -175,14 +175,14 @@ export const RouteMap: React.FC<RouteMapProps> = ({
                 fontFamily: "var(--font-mono)",
                 fontSize: "0.65rem",
                 color: "var(--text-secondary)",
-                marginTop: "2px",
+                marginTop: "0.125rem",
               }}
             >
               {subtitle}
             </p>
           )}
         </div>
-        <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
           {isZoomed && (
             <motion.button
               onClick={() => setVb({ x: 0, y: 0, w: 800, h: 360 })}
@@ -194,7 +194,7 @@ export const RouteMap: React.FC<RouteMapProps> = ({
                 color: "var(--text-secondary)",
                 fontSize: "0.6rem",
                 fontFamily: "var(--font-mono)",
-                padding: "6px 12px",
+                padding: "0.375rem 0.75rem",
                 cursor: "pointer",
                 transition: "var(--transition-smooth)",
               }}
@@ -203,7 +203,7 @@ export const RouteMap: React.FC<RouteMapProps> = ({
               Reset {zoomLevel}%
             </motion.button>
           )}
-          <div style={{ display: "flex", gap: "2px" }}>
+          <div style={{ display: "flex", gap: "0.125rem" }}>
             <motion.button
               onClick={() => zoomAt(0.8)}
               whileTap={{ scale: 0.96 }}
@@ -212,8 +212,8 @@ export const RouteMap: React.FC<RouteMapProps> = ({
                 border: "1px solid var(--border-muted)",
                 borderRadius: "var(--radius-xs)",
                 color: "var(--text-primary)",
-                width: "28px",
-                height: "28px",
+                width: "1.75rem",
+                height: "1.75rem",
                 padding: 0,
                 fontSize: "1rem",
                 lineHeight: 1,
@@ -235,8 +235,8 @@ export const RouteMap: React.FC<RouteMapProps> = ({
                 border: "1px solid var(--border-muted)",
                 borderRadius: "var(--radius-xs)",
                 color: "var(--text-primary)",
-                width: "28px",
-                height: "28px",
+                width: "1.75rem",
+                height: "1.75rem",
                 padding: 0,
                 fontSize: "1rem",
                 lineHeight: 1,
@@ -258,7 +258,7 @@ export const RouteMap: React.FC<RouteMapProps> = ({
       <div
         style={{
           flex: 1,
-          minHeight: "260px",
+          minHeight: "16.25rem",
           overflow: "hidden",
           borderRadius: "var(--radius-md)",
         }}
@@ -425,7 +425,7 @@ export const RouteMap: React.FC<RouteMapProps> = ({
                   : "rgba(255, 255, 255, 0.02)",
                 border: `1px solid ${isSelected ? "var(--accent-pink-primary)" : "var(--border-muted)"}`,
                 borderRadius: "var(--radius-sm)",
-                padding: "8px 14px",
+                padding: "0.5rem 0.875rem",
                 color: isSelected ? "var(--text-primary)" : "var(--text-secondary)",
                 fontSize: "0.78rem",
                 fontWeight: isSelected ? 600 : 400,
@@ -435,7 +435,7 @@ export const RouteMap: React.FC<RouteMapProps> = ({
                 flexDirection: "column",
                 alignItems: "flex-start",
                 textAlign: "left",
-                flex: "1 1 200px",
+                flex: "1 1 12.5rem",
               }}
             >
               {route.vessel && (
@@ -444,9 +444,9 @@ export const RouteMap: React.FC<RouteMapProps> = ({
                     fontSize: "0.58rem",
                     fontFamily: "var(--font-mono)",
                     textTransform: "uppercase",
-                    letterSpacing: "0.5px",
+                    letterSpacing: "0.03125rem",
                     color: isSelected ? "var(--accent-pink-primary)" : "var(--text-muted)",
-                    marginBottom: "2px",
+                    marginBottom: "0.125rem",
                   }}
                 >
                   {route.vessel}
@@ -460,8 +460,8 @@ export const RouteMap: React.FC<RouteMapProps> = ({
                   fontSize: "0.62rem",
                   fontFamily: "var(--font-mono)",
                   color: "var(--text-muted)",
-                  marginTop: "3px",
-                  letterSpacing: "0.2px",
+                  marginTop: "0.1875rem",
+                  letterSpacing: "0.0125rem",
                 }}
               >
                 {route.origin.code} &rarr; {route.destination.code}

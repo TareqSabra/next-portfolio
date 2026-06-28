@@ -94,7 +94,8 @@ export async function GET(request: NextRequest) {
       userAgent: request.headers.get("user-agent") || undefined,
     };
 
-    const isLocalhost = ip === "127.0.0.1" || ip === "::1" || ip === "localhost";
+    const isLocalhost =
+      ip === "127.0.0.1" || ip === "::1" || ip === "localhost";
 
     const store = await readStore();
     const isNewIp = !store.notifiedIps.includes(ip);
@@ -113,9 +114,6 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ logged: true, isNewIp });
   } catch (error) {
     console.error("Visit logging failed:", error);
-    return NextResponse.json(
-      { error: "Failed to log visit" },
-      { status: 500 },
-    );
+    return NextResponse.json({ error: "Failed to log visit" }, { status: 500 });
   }
 }

@@ -9,11 +9,11 @@ export default function ProjectsSection() {
         fontSize: "2.5rem",
         color: "var(--text-primary)",
         fontWeight: 700,
-        letterSpacing: "-0.5px"
+        letterSpacing: "-0.03125rem"
       }}>
         Featured Work
       </h2>
-      <p style={{ color: "var(--text-secondary)", marginTop: "8px", maxWidth: "600px" }}>
+      <p style={{ color: "var(--text-secondary)", marginTop: "0.5rem", maxWidth: "37.5rem" }}>
         Decoupled frontend apps served as independent microfrontends in this pnpm monorepo.
       </p>
       

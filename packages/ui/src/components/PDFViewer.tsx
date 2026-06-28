@@ -39,8 +39,12 @@ export const PDFViewer = ({ pdfUrl }: { pdfUrl: string }) => {
   }
 
   return (
-    <div style={{ height: "500px" }}>
-      <EmbedPDF engine={engine} plugins={plugins}>
+    <div style={{ height: "31.25rem" }}>
+      <EmbedPDF
+        engine={engine}
+        plugins={plugins}
+        config={{ defaultScale: 1.6 }}
+      >
         {({ activeDocumentId }) =>
           activeDocumentId && (
             <DocumentContent documentId={activeDocumentId}>

@@ -34,7 +34,7 @@ export default function ArchitectureSection({
       className="snap-section"
       style={{}}
     >
-      <div style={{ width: "100%", maxWidth: "1200px", zIndex: 10 }}>
+      <div style={{ width: "100%", maxWidth: "75rem", zIndex: 10 }}>
         <FadeIn direction="up">
           <h2
             style={{
@@ -42,8 +42,8 @@ export default function ArchitectureSection({
               fontSize: "2.5rem",
               color: "var(--text-primary)",
               fontWeight: 700,
-              letterSpacing: "-0.5px",
-              marginBottom: "8px",
+              letterSpacing: "-0.03125rem",
+              marginBottom: "0.5rem",
             }}
           >
             How I Engineered My Portfolio Website
@@ -51,8 +51,8 @@ export default function ArchitectureSection({
           <p
             style={{
               color: "var(--text-secondary)",
-              marginBottom: "32px",
-              maxWidth: "600px",
+              marginBottom: "2rem",
+              maxWidth: "37.5rem",
               fontSize: "1rem",
             }}
           >
@@ -66,7 +66,7 @@ export default function ArchitectureSection({
               <div className="explorer-sidebar-header">WORKSPACE EXPLORER</div>
               <div className="explorer-tree">
                 <div className="explorer-item folder">📁 next-portfolio</div>
-                <div style={{ paddingLeft: "16px" }}>
+                <div style={{ paddingLeft: "1rem" }}>
                   {files["pnpm-workspace.yaml"] && (
                     <div
                       className={`explorer-item ${activeFileKey === "pnpm-workspace.yaml" ? "active" : ""}`}
@@ -85,11 +85,11 @@ export default function ArchitectureSection({
                   )}
 
                   <div className="explorer-item folder">📁 apps</div>
-                  <div style={{ paddingLeft: "16px" }}>
+                  <div style={{ paddingLeft: "1rem" }}>
                     <div className="explorer-item folder">
                       📁 main-portfolio
                     </div>
-                    <div style={{ paddingLeft: "16px" }}>
+                    <div style={{ paddingLeft: "1rem" }}>
                       {files["main-portfolio/next.config.ts"] && (
                         <div
                           className={`explorer-item ${activeFileKey === "main-portfolio/next.config.ts" ? "active" : ""}`}
@@ -105,7 +105,7 @@ export default function ArchitectureSection({
                     <div className="explorer-item folder">
                       📁 project-dashboard
                     </div>
-                    <div style={{ paddingLeft: "16px" }}>
+                    <div style={{ paddingLeft: "1rem" }}>
                       {files["project-dashboard/next.config.ts"] && (
                         <div
                           className={`explorer-item ${activeFileKey === "project-dashboard/next.config.ts" ? "active" : ""}`}
@@ -129,11 +129,11 @@ export default function ArchitectureSection({
                   )}
 
                   <div className="explorer-item folder">📁 packages</div>
-                  <div style={{ paddingLeft: "16px" }}>
+                  <div style={{ paddingLeft: "1rem" }}>
                     <div className="explorer-item folder">📁 ui</div>
-                    <div style={{ paddingLeft: "16px" }}>
+                    <div style={{ paddingLeft: "1rem" }}>
                       <div className="explorer-item folder">📁 3D</div>
-                      <div style={{ paddingLeft: "16px" }}>
+                      <div style={{ paddingLeft: "1rem" }}>
                         {files["ui/src/components/3d/blob.tsx"] && (
                           <div
                             className={`explorer-item ${activeFileKey === "ui/src/components/3d/blob.tsx" ? "active" : ""}`}
@@ -146,7 +146,7 @@ export default function ArchitectureSection({
                         )}
                       </div>
                       <div className="explorer-item folder">📁 styles</div>
-                      <div style={{ paddingLeft: "16px" }}>
+                      <div style={{ paddingLeft: "1rem" }}>
                         {files["ui/src/styles/tokens.css"] && (
                           <div
                             className={`explorer-item ${activeFileKey === "ui/src/styles/tokens.css" ? "active" : ""}`}
@@ -194,7 +194,7 @@ export default function ArchitectureSection({
                     style={{
                       height: "1px",
                       background: "var(--border-muted)",
-                      margin: "8px 0",
+                      margin: "0.5rem 0",
                     }}
                   />
 
