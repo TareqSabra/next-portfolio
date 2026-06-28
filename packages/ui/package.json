@@ -32,8 +32,8 @@
       "default": "./index.tsx"
     },
     "./3d": {
-      "types": "./src/components/3D/blob.tsx",
-      "default": "./src/components/3D/blob.tsx"
+      "types": "./src/components/3d/blob.tsx",
+      "default": "./src/components/3d/blob.tsx"
     },
     "./pdf": {
       "types": "./src/components/PDFViewer.tsx",
