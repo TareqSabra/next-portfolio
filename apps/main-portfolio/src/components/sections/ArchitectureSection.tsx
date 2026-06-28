@@ -32,10 +32,7 @@ export default function ArchitectureSection({
     <section
       id="architecture"
       className="snap-section"
-      style={{
-        background:
-          "radial-gradient(circle at 90% 20%, rgba(79, 172, 254, 0.04) 0%, transparent 40%)",
-      }}
+      style={{}}
     >
       <div style={{ width: "100%", maxWidth: "1200px", zIndex: 10 }}>
         <FadeIn direction="up">
@@ -121,6 +118,15 @@ export default function ArchitectureSection({
                       )}
                     </div>
                   </div>
+
+                  {files["package.json"] && (
+                    <div
+                      className={`explorer-item ${activeFileKey === "package.json" ? "active" : ""}`}
+                      onClick={() => setActiveFileKey("package.json")}
+                    >
+                      📦 package.json
+                    </div>
+                  )}
 
                   <div className="explorer-item folder">📁 packages</div>
                   <div style={{ paddingLeft: "16px" }}>

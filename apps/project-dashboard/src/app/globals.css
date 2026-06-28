@@ -48,6 +48,13 @@
   --radius-4xl: calc(var(--radius) * 2.6);
 }
 
+body {
+  --accent-neon-blue: #e29b9f;
+  --accent-neon-purple: #ff8a9f;
+  --border-glow: rgba(226, 155, 159, 0.2);
+  --shadow-glow-blue: 0 0 20px rgba(226, 155, 159, 0.25);
+}
+
 :root {
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);

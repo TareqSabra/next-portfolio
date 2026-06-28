@@ -3,7 +3,7 @@ import { Card } from "@portfolio/ui";
 
 export default function ProjectsSection() {
   return (
-    <section id="projects" className="snap-section" style={{ background: "radial-gradient(circle at 90% 80%, rgba(79, 172, 254, 0.08) 0%, transparent 40%)" }}>
+    <section id="projects" className="snap-section">
       <h2 style={{
         fontFamily: "var(--font-display)",
         fontSize: "2.5rem",
@@ -26,6 +26,7 @@ export default function ProjectsSection() {
         <Card 
           title="Shared UI Component System" 
           description="A design token system and component library built with Vanilla CSS, shared dynamically between the host app and microfrontends."
+          href="/design-system"
         />
       </div>
 

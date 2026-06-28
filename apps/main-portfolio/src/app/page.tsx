@@ -86,6 +86,24 @@ const filesToLoad = {
       "Ensures design styling consistency across all microfrontends.",
     ],
   },
+  "package.json": {
+    relPath: "package.json",
+    lang: "json",
+    name: "package.json (Root)",
+    type: "config" as const,
+    explanation:
+      "The root package.json declares the monorepo's workspace-level scripts, devDependencies, and most importantly the key libraries powering the entire stack.",
+    takeaways: [
+      "pnpm workspaces + Turborepo for monorepo orchestration.",
+      "Next.js 16 with Multi-Zones for microfrontend architecture.",
+      "motion (React 19) for all animations and transitions.",
+      "shiki for syntax highlighting in the architecture code viewer.",
+      "nodemailer for server-side contact form email delivery.",
+      "React Three Fiber + Drei for the 3D blob hero graphic.",
+      "shadcn/ui + Tailwind CSS for the component system.",
+      "Outfit & Space Grotesk fonts via next/font for typography.",
+    ],
+  },
 };
 
 async function getHighlightedFile(

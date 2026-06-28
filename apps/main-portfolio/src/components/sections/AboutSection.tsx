@@ -9,10 +9,7 @@ export default function AboutSection() {
     <section
       id="about"
       className="snap-section"
-      style={{
-        background:
-          "radial-gradient(circle at 10% 50%, rgba(226, 155, 159, 0.05) 0%, transparent 40%)",
-      }}
+      style={{}}
     >
       <div className="about-layout">
         {/* Left Column - About narrative */}

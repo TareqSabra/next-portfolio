@@ -13,10 +13,7 @@ export default function HeroSection() {
     <section
       id="hero"
       className="snap-section"
-      style={{
-        background:
-          "radial-gradient(circle at 10% 20%, rgba(226, 155, 159, 0.05) 0%, transparent 40%)",
-      }}
+      style={{}}
     >
       <div className="hero-layout-premium">
         {/* Left Column - Intro details */}

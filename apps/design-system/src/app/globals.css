@@ -1,0 +1,6 @@
+body {
+  --accent-neon-blue: #e29b9f;
+  --accent-neon-purple: #ff8a9f;
+  --border-glow: rgba(226, 155, 159, 0.2);
+  --shadow-glow-blue: 0 0 20px rgba(226, 155, 159, 0.25);
+}

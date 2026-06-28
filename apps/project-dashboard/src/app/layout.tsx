@@ -33,7 +33,7 @@ export default function RootLayout({
         <QueryProvider>
           <a
             href="/"
-            className="fixed top-6 left-6 z-50 flex items-center justify-center w-12 h-12 rounded-full border border-[var(--border-muted)] bg-[var(--glass-bg)] backdrop-blur-md text-[var(--text-primary)] shadow-lg transition-all duration-300 hover:border-[var(--accent-neon-blue)] hover:text-[var(--accent-neon-blue)] hover:scale-110 hover:shadow-[0_0_20px_rgba(0,242,254,0.25)] group"
+            className="portfolio-btn portfolio-btn-secondary fixed top-6 left-6 z-50 w-12 h-12 !p-0 !rounded-full backdrop-blur-md shadow-lg group"
             title="Back to Portfolio"
           >
             <ArrowLeft size={20} className="transition-transform duration-300 group-hover:translate-x-[-3px]" />

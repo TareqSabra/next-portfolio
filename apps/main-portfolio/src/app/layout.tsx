@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import { Header } from "@portfolio/ui";
 import { Inter } from "next/font/google";
-import { cn } from "@/lib/utils";
+import KeyboardNav from "../components/KeyboardNav";
+import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -18,8 +18,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="portfolio-body">
-        <main style={{ flex: 1, width: "100%" }}>{children}</main>
+      <body
+        className="portfolio-body"
+        style={{
+          flexDirection: "row",
+          background: "radial-gradient(ellipse at 20% 50%, rgba(226, 155, 159, 0.06) 0%, transparent 60%), var(--bg-primary)",
+        }}
+      >
+        <KeyboardNav />
+        <main style={{ flex: 1, minWidth: 0 }}>{children}</main>
       </body>
     </html>
   );
