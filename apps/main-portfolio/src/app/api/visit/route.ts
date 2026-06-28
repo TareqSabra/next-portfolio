@@ -94,13 +94,15 @@ export async function GET(request: NextRequest) {
       userAgent: request.headers.get("user-agent") || undefined,
     };
 
+    const isLocalhost = ip === "127.0.0.1" || ip === "::1" || ip === "localhost";
+
     const store = await readStore();
     const isNewIp = !store.notifiedIps.includes(ip);
 
     store.visits.push(entry);
     await writeStore(store);
 
-    if (isNewIp) {
+    if (isNewIp && !isLocalhost) {
       store.notifiedIps.push(ip);
       await writeStore(store);
       sendVisitEmail(entry).catch((err) =>
