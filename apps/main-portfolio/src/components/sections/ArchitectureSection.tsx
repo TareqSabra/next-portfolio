@@ -134,11 +134,11 @@ export default function ArchitectureSection({
                     <div style={{ paddingLeft: "16px" }}>
                       <div className="explorer-item folder">📁 3D</div>
                       <div style={{ paddingLeft: "16px" }}>
-                        {files["ui/src/components/3D/blob.tsx"] && (
+                        {files["ui/src/components/3d/blob.tsx"] && (
                           <div
-                            className={`explorer-item ${activeFileKey === "ui/src/components/3D/blob.tsx" ? "active" : ""}`}
+                            className={`explorer-item ${activeFileKey === "ui/src/components/3d/blob.tsx" ? "active" : ""}`}
                             onClick={() =>
-                              setActiveFileKey("ui/src/components/3D/blob.tsx")
+                              setActiveFileKey("ui/src/components/3d/blob.tsx")
                             }
                           >
                             📄 blob.tsx

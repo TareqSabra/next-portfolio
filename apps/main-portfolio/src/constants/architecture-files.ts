@@ -51,8 +51,8 @@ export const filesToLoad = {
       "Ensures the router serves Next.js endpoints on port 3001.",
     ],
   },
-  "ui/src/components/3D/blob.tsx": {
-    relPath: "packages/ui/src/components/3D/blob.tsx",
+  "ui/src/components/3d/blob.tsx": {
+    relPath: "packages/ui/src/components/3d/blob.tsx",
     lang: "tsx",
     name: "blob.tsx (Shared 3D Canvas)",
     type: "code" as const,
