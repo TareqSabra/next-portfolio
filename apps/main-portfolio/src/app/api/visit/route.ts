@@ -25,7 +25,11 @@ interface VisitStore {
 async function readStore(): Promise<VisitStore> {
   try {
     const raw = await fs.readFile(DATA_FILE, "utf-8");
-    return JSON.parse(raw);
+    const parsed = JSON.parse(raw);
+    return {
+      visits: parsed.visits || [],
+      notifiedIps: parsed.notifiedIps || [],
+    };
   } catch {
     return { visits: [], notifiedIps: [] };
   }
@@ -78,30 +82,38 @@ async function sendVisitEmail(entry: VisitEntry): Promise<void> {
 export const dynamic = "force-dynamic";
 
 export async function GET(request: NextRequest) {
-  const ip =
-    request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
-    request.headers.get("x-real-ip") ||
-    "unknown";
+  try {
+    const ip =
+      request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
+      request.headers.get("x-real-ip") ||
+      "unknown";
 
-  const entry: VisitEntry = {
-    ip,
-    timestamp: new Date().toISOString(),
-    userAgent: request.headers.get("user-agent") || undefined,
-  };
+    const entry: VisitEntry = {
+      ip,
+      timestamp: new Date().toISOString(),
+      userAgent: request.headers.get("user-agent") || undefined,
+    };
 
-  const store = await readStore();
-  const isNewIp = !store.notifiedIps.includes(ip);
+    const store = await readStore();
+    const isNewIp = !store.notifiedIps.includes(ip);
 
-  store.visits.push(entry);
-  await writeStore(store);
-
-  if (isNewIp) {
-    store.notifiedIps.push(ip);
+    store.visits.push(entry);
     await writeStore(store);
-    sendVisitEmail(entry).catch((err) =>
-      console.error("Visit email failed:", err),
+
+    if (isNewIp) {
+      store.notifiedIps.push(ip);
+      await writeStore(store);
+      sendVisitEmail(entry).catch((err) =>
+        console.error("Visit email failed:", err),
+      );
+    }
+
+    return NextResponse.json({ logged: true, isNewIp });
+  } catch (error) {
+    console.error("Visit logging failed:", error);
+    return NextResponse.json(
+      { error: "Failed to log visit" },
+      { status: 500 },
     );
   }
-
-  return NextResponse.json({ logged: true, isNewIp });
 }

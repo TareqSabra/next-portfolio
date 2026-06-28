@@ -7,7 +7,7 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
 export const metadata: Metadata = {
-  title: "Premium Portfolio Monorepo",
+  title: "Tareq Sabra",
   description:
     "A showcase of engineering excellence built with Next.js Multi-Zones microfrontends.",
 };
@@ -23,7 +23,8 @@ export default function RootLayout({
         className="portfolio-body"
         style={{
           flexDirection: "row",
-          background: "radial-gradient(ellipse at 20% 50%, rgba(226, 155, 159, 0.06) 0%, transparent 60%), var(--bg-primary)",
+          background:
+            "radial-gradient(ellipse at 20% 50%, rgba(226, 155, 159, 0.06) 0%, transparent 60%), var(--bg-primary)",
         }}
       >
         <KeyboardNav />
