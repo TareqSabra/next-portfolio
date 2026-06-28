@@ -13,11 +13,12 @@ const filesToLoad = {
     lang: "yaml",
     name: "pnpm-workspace.yaml",
     type: "config" as const,
-    explanation: "Defines the monorepo workspace directories. It instructs pnpm to link package dependencies across local folders globally instead of using npm registries.",
+    explanation:
+      "Defines the monorepo workspace directories. It instructs pnpm to link package dependencies across local folders globally instead of using npm registries.",
     takeaways: [
       "Links local apps/ and packages/ together.",
       "Ensures zero duplicate installs across the repo.",
-      "Enables local package symlinking using workspace:* references."
+      "Enables local package symlinking using workspace:* references.",
     ],
   },
   "turbo.json": {
@@ -25,11 +26,12 @@ const filesToLoad = {
     lang: "json",
     name: "turbo.json",
     type: "config" as const,
-    explanation: "Configures the Turborepo pipeline, coordinating builds, tests, and linting tasks efficiently with localized, incremental compilation caching.",
+    explanation:
+      "Configures the Turborepo pipeline, coordinating builds, tests, and linting tasks efficiently with localized, incremental compilation caching.",
     takeaways: [
       "Caches build artifacts globally or locally.",
       "Speeds up compile times by only compiling what changed.",
-      "Maps task dependency chains (e.g., compile shared UI before building apps)."
+      "Maps task dependency chains (e.g., compile shared UI before building apps).",
     ],
   },
   "main-portfolio/next.config.ts": {
@@ -37,11 +39,12 @@ const filesToLoad = {
     lang: "typescript",
     name: "next.config.ts (Host App)",
     type: "code" as const,
-    explanation: "The Next.js configuration for the host (shell) app. Configures proxy-level rewrites mapping path routes dynamically to route traffic to the sub-app.",
+    explanation:
+      "The Next.js configuration for the host (shell) app. Configures proxy-level rewrites mapping path routes dynamically to route traffic to the sub-app.",
     takeaways: [
       "Configures Next.js Multi-Zones microfrontend routing.",
       "Rewrites requests targeting /dashboard directly to localhost:3001.",
-      "Declares transpilePackages to enable instant HMR across the UI library."
+      "Declares transpilePackages to enable instant HMR across the UI library.",
     ],
   },
   "project-dashboard/next.config.ts": {
@@ -49,11 +52,12 @@ const filesToLoad = {
     lang: "typescript",
     name: "next.config.ts (Sub App)",
     type: "code" as const,
-    explanation: "Configuration for the project-dashboard microfrontend. Sets the basePath to align routing and prevent file collision with the host.",
+    explanation:
+      "Configuration for the project-dashboard microfrontend. Sets the basePath to align routing and prevent file collision with the host.",
     takeaways: [
       "Establishes basePath: '/dashboard' so all routes align under the sub-path.",
       "Prevents root assets and scripts from colliding with host resources.",
-      "Ensures the router serves Next.js endpoints on port 3001."
+      "Ensures the router serves Next.js endpoints on port 3001.",
     ],
   },
   "ui/src/components/3D/blob.tsx": {
@@ -61,11 +65,12 @@ const filesToLoad = {
     lang: "tsx",
     name: "blob.tsx (Shared 3D Canvas)",
     type: "code" as const,
-    explanation: "Uses React Three Fiber (R3F) and Drei to render the morphing, organic 3D gradient blob. Scaled and positioned in 3D scene coordinate space.",
+    explanation:
+      "Uses React Three Fiber (R3F) and Drei to render the morphing, organic 3D gradient blob. Scaled and positioned in 3D scene coordinate space.",
     takeaways: [
       "Imports WebGL components client-side.",
       "Combines Sphere and MeshDistortMaterial for organic 3D morphing shapes.",
-      "Applies GradientTexture directly to material to display button colors."
+      "Applies GradientTexture directly to material to display button colors.",
     ],
   },
   "ui/src/styles/tokens.css": {
@@ -73,13 +78,14 @@ const filesToLoad = {
     lang: "css",
     name: "tokens.css (Design System)",
     type: "style" as const,
-    explanation: "Stores core CSS custom variables and styling tokens (neon colors, glass backgrounds, Outfit / Space Grotesk typography) shared across the workspace.",
+    explanation:
+      "Stores core CSS custom variables and styling tokens (neon colors, glass backgrounds, Outfit / Space Grotesk typography) shared across the workspace.",
     takeaways: [
       "Centralizes responsive colors and core layout themes.",
       "Contains variables for modern glassmorphism backdrops.",
-      "Ensures design styling consistency across all microfrontends."
+      "Ensures design styling consistency across all microfrontends.",
     ],
-  }
+  },
 };
 
 async function getHighlightedFile(
@@ -88,7 +94,7 @@ async function getHighlightedFile(
   name: string,
   type: "code" | "config" | "style",
   explanation: string,
-  takeaways: string[]
+  takeaways: string[],
 ) {
   try {
     const fullPath = path.join(process.cwd(), "../../", relPath);
@@ -120,19 +126,25 @@ async function getHighlightedFile(
 
 export default async function Home() {
   const fileKeys = Object.keys(filesToLoad) as Array<keyof typeof filesToLoad>;
-  const loadedFiles: Record<string, any> = {};
 
-  for (const key of fileKeys) {
-    const fileDef = filesToLoad[key];
-    loadedFiles[key] = await getHighlightedFile(
-      fileDef.relPath,
-      fileDef.lang,
-      fileDef.name,
-      fileDef.type,
-      fileDef.explanation,
-      fileDef.takeaways
-    );
-  }
+  const results = await Promise.all(
+    fileKeys.map((key) => {
+      const fileDef = filesToLoad[key];
+      return getHighlightedFile(
+        fileDef.relPath,
+        fileDef.lang,
+        fileDef.name,
+        fileDef.type,
+        fileDef.explanation,
+        fileDef.takeaways,
+      );
+    }),
+  );
+
+  const loadedFiles: Record<string, any> = {};
+  fileKeys.forEach((key, i) => {
+    loadedFiles[key] = results[i];
+  });
 
   return (
     <div className="snap-container">

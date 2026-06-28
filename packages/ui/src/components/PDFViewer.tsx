@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { createPluginRegistration } from "@embedpdf/core";
 import { EmbedPDF } from "@embedpdf/core/react";
 import { usePdfiumEngine } from "@embedpdf/engines/react";
@@ -21,14 +22,17 @@ import {
 
 export const PDFViewer = ({ pdfUrl }: { pdfUrl: string }) => {
   const { engine, isLoading } = usePdfiumEngine();
-  const plugins = [
-    createPluginRegistration(DocumentManagerPluginPackage, {
-      initialDocuments: [{ url: pdfUrl }],
-    }),
-    createPluginRegistration(ViewportPluginPackage),
-    createPluginRegistration(ScrollPluginPackage),
-    createPluginRegistration(RenderPluginPackage),
-  ];
+  const plugins = useMemo(
+    () => [
+      createPluginRegistration(DocumentManagerPluginPackage, {
+        initialDocuments: [{ url: pdfUrl }],
+      }),
+      createPluginRegistration(ViewportPluginPackage),
+      createPluginRegistration(ScrollPluginPackage),
+      createPluginRegistration(RenderPluginPackage),
+    ],
+    [pdfUrl],
+  );
 
   if (isLoading || !engine) {
     return <div>Loading PDF Engine...</div>;

@@ -96,7 +96,6 @@ export default function HeroSection() {
               alt="Tareq Sabra Portrait"
               width={800}
               height={800}
-              quality={95}
               className="hero-portrait-img"
               priority
             />

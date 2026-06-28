@@ -28,7 +28,8 @@ export default function AboutSection() {
                 marginBottom: "var(--spacing-lg)",
               }}
             >
-              About <span style={{ color: "var(--accent-pink-primary)" }}>Me</span>
+              About{" "}
+              <span style={{ color: "var(--accent-pink-primary)" }}>Me</span>
             </h2>
             <p
               style={{
@@ -76,7 +77,7 @@ export default function AboutSection() {
         {/* Right Column - Skill Categories */}
         <div style={{ flex: 0.9, width: "100%" }}>
           <FadeIn delay={0.3} direction="down">
-            <PDFViewer pdfUrl="/cv.pdf" />
+            <PDFViewer pdfUrl="/newCv.pdf" />
           </FadeIn>
         </div>
       </div>

@@ -56,7 +56,12 @@ Please adhere to the following rules when creating files or installing packages:
     <html lang="en" suppressHydrationWarning>
     ```
 
+### Rule 5: Load and Follow Global Skills
+* Always scan the global agents skills folder at `C:/Users/tareq/.agents/skills/` at the start of any task.
+* When performing tasks such as styling, layout design, database interaction, or routing, check if there are relevant global skills (e.g., `frontend-design`, `grill-me`, `make-interfaces-feel-better`, etc.) in that folder and read their `SKILL.md` files to adhere to them.
+
 ---
+
 
 ## 4. Useful Commands
 
@@ -74,3 +79,4 @@ Run all scripts from the **workspace root** directory:
     ```bash
     pnpm --filter main-portfolio add [package-name]
     ```
+
