@@ -8,8 +8,7 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
 export const metadata: Metadata = {
   title: "Tareq Sabra",
-  description:
-    "A showcase of engineering excellence built with Next.js Multi-Zones microfrontends.",
+  description: "Tareq Sabra - Software Engineer",
 };
 
 export default function RootLayout({
