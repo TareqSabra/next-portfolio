@@ -1,209 +1,163 @@
-# Global Maritime Logistics Dashboard
+# Tareq Sabra — Full Stack Engineer Portfolio Monorepo
 
-A real-time maritime telemetry and freight management platform that visualizes global shipping routes, tracks vessel movements, monitors port conditions, and calculates multimodal freight costs.
-
----
-
-## The Business Domain
-
-### Why Maritime Logistics Matters
-
-Maritime shipping moves **90% of global trade** by volume — roughly 11 billion tons of cargo per year across 50,000+ merchant vessels. Every manufactured good, commodity, and raw material spends time on a container ship. The industry operates on razor-thin margins where a single delay at a port can cascade into weeks of disrupted supply chains.
-
-Three converging trends make this space critical today:
-
-- **Supply chain fragility** — Post-pandemic, port congestion, weather disruptions, and geopolitical events regularly ripple through global logistics. Real-time visibility is no longer a luxury.
-- **The data explosion** — Modern vessels generate terabytes of telemetry (AIS position pings, engine sensors, weather routing, ECDIS logs). The challenge is turning that firehose into actionable information.
-- **Decarbonization pressure** — The IMO's 2030/2050 emissions targets are forcing carriers to optimize every knot. Route optimization, speed management, and port efficiency directly affect carbon intensity ratings.
-
-### What This Dashboard Does
-
-This dashboard is a **command center prototype** for a logistics operations team. It consolidates four workflows that are typically spread across disconnected systems:
-
-| Workflow | Typical Tooling | This Dashboard |
-|----------|----------------|----------------|
-| Vessel tracking | AIS platforms (MarineTraffic, VesselFinder) | SVG route map with real-time position, ETA, and progress |
-| Port intelligence | Weather services + port authority websites | Integrated weather advisory per destination port |
-| Customs compliance | Country databases + manual lookup | Flag, jurisdiction, currency, language — one click |
-| Freight costing | Spreadsheets + rate sheets | Dynamic calculator with live FX and multi-currency checkout |
+Welcome to the repository of my developer portfolio and microfrontend showcase. This project is built as a **Next.js Microfrontend Monorepo** leveraging modern web standards, modular UI packaging, and Turborepo orchestration.
 
 ---
 
-## How the Dashboard Maps to Real Operations
+## 🙋‍♂️ About Me
 
-### 1. Route Map — Global Fleet Visibility
+I am a **Full Stack Engineer** with **5+ years of experience** building and delivering production-grade web applications. My expertise is centered around **React, TypeScript, and Python**, with a deep passion for modern frontend architecture, AI-driven applications (RAG pipelines, LLM streaming), and highly optimized real-time systems.
 
-**Business problem**: A logistics coordinator needs to see, at a glance, where every active vessel is, what route it's on, and its status.
+I blend strong software engineering fundamentals with modern, fast-paced workflows to deliver scalable, reliable, and user-centric interfaces.
 
-The map shows **9 major shipping routes** across 20 ports — Shanghai→Rotterdam, Singapore→Los Angeles, Rotterdam→New York, and others. Each route is a real SVG path computed from lat/lon coordinates using a calibrated Mercator projection.
-
-- **Vessel markers** move along route paths using SVG `offset-path`, showing progress as a percentage of the voyage completed
-- **Origin ports** pulse in neon blue, destination ports in pink
-- **Status badges** (On Schedule / Delayed / Under Review) reflect real carrier operations
-- **Pan and zoom** let operators drill into specific regions, with drag-to-pan and scroll-wheel zoom
-
-**Who uses this**: Fleet operations managers, supply chain analysts, port agents.
-
-### 2. Vessel Telemetry — At-a-Glance Stats
-
-**Business problem**: When a carrier calls in, the operator needs speed, ETA, and route details without digging through AIS feeds.
-
-Displays current speed (knots), estimated arrival time, and the origin→destination route with a progress bar. This is the condensed "bridge view" — the same data a ship's captain would see on the navigation display, presented for a shoreside audience.
-
-**Who uses this**: Vessel traffic coordinators, chartering desks, port logistics.
-
-### 3. Port Advisory — Weather Intelligence
-
-**Business problem**: Weather is the #1 cause of port delays outside of mechanical failures. High winds close container cranes. Rough seas prevent pilot boarding. Thunderstorms halt cargo handling.
-
-The advisory panel pulls live weather from the OpenWeather API (with mock fallback) for each destination port. It shows:
-- **Temperature** — affects cargo (reefer containers, sensitive goods)
-- **Wind speed and direction** — determines whether cranes can operate (typically >30 kn = port closure)
-- **Alert conditions** — high winds vs. calm seas, dynamically evaluated
-
-In a production system, this would feed into scheduling algorithms that flag at-risk arrivals 48 hours ahead.
-
-**Who uses this**: Port captains, terminal operators, scheduling desks.
-
-### 4. Customs Verification — Regulatory Clearance
-
-**Business problem**: Every international shipment must clear customs. The clearance process requires verified country data — official jurisdiction name, currency codes, languages, population thresholds for duties.
-
-This panel fetches country profiles from the REST Countries API and displays:
-- National flag (visual confirmation)
-- Official jurisdiction name
-- Population (used for de minimis threshold calculations)
-- Currency with symbol (drives the invoice currency display)
-- Languages (relevant for documentation requirements)
-
-The "Cargo manifests verified" badge signals regulatory compliance.
-
-**Who uses this**: Customs brokers, compliance officers, freight forwarders.
-
-### 5. Freight Calculator — Costing & Multi-Currency Settlement
-
-**Business problem**: A freight invoice involves multiple cost layers — base freight, insurance, customs fees — and payment may settle in any of several currencies. The operator needs to quote, calculate, and present costs in real time.
-
-The calculator models a real freight bill:
-
-| Cost Component | How It's Calculated | Business Logic |
-|---------------|-------------------|----------------|
-| **Base freight** | TEUs × rate per container | Rate varies by route (high-demand transpacific = $4800/TEU, Asia-Europe = $3400/TEU) |
-| **Insurance** | TEUs × $250/TEU (optional) | Marine risk insurance, typical at 1-3% of cargo value |
-| **Customs fees** | TEUs × $180/TEU | Fixed regulatory processing fee per container |
-| **Currency conversion** | USD → local currency, USDC, ETH, BTC | Live rates from CoinGecko, reflecting real crypto adoption in trade finance |
-
-The multi-currency payment grid shows settlement options in:
-- **Local currency** (e.g., EUR for Rotterdam, CNY for Shanghai)
-- **USDC** — the stablecoin of choice for trade finance
-- **Ethereum (ETH)** — used in smart contract-based letters of credit
-- **Bitcoin (BTC)** — increasingly accepted for international wire alternatives
-
-An "Issue freight invoice" button generates a confirmation modal with the final breakdown.
-
-**Who uses this**: Freight rate managers, finance teams, trading desks, logistics procurement.
+### 📬 Contact & Socials
+*   **Email**: [tareqjammal98@gmail.com](mailto:tareqjammal98@gmail.com)
+*   **Phone**: +970597343672
+*   **LinkedIn**: [linkedin.com/in/tareq-sabra](https://linkedin.com/in/tareq-sabra)
+*   **Location**: Palestine
+*   **Education**: B.S. in Computer Engineering, An-Najah National University (ABET-certified)
 
 ---
 
-## Data Resilience — Production-Ready Fallbacks
+## 🛠️ Tech Stack & Expertise
 
-In maritime operations, internet connectivity is unreliable — vessels at sea have limited bandwidth, shoreside APIs go down, and rate limits hit during market volatility. Every data source in this dashboard has a built-in mock fallback:
-
-| API | Fallback | Coverage |
-|-----|----------|----------|
-| OpenWeather | `MOCK_WEATHER` | 8 major port cities |
-| REST Countries | `MOCK_COUNTRIES` | 8 trading nations (CN, NL, SG, US, DE, KR, AE, JP) |
-| CoinGecko | `MOCK_EXCHANGE_RATES` | BTC, ETH, USDC |
-
-This means the dashboard is **fully functional offline** — useful for demos, disconnected operations, and rate-limited scenarios.
-
----
-
-## The Routes — Real Trade Corridors
-
-The 9 routes model real commercial shipping lanes:
-
-| Route | Trade Corridor | Typical Vessel |
-|-------|---------------|---------------|
-| Asia-Europe Express (AEX) | Shanghai → Rotterdam | 24,000 TEU Neo-Panamax |
-| Transpacific Eastbound (TPE) | Singapore → Los Angeles | 20,000 TEU Post-Panamax |
-| Transatlantic Bridge (TAB) | Rotterdam → Los Angeles | 18,000 TEU |
-| Korea-West Coast Express (KWX) | Busan → Los Angeles | 16,000 TEU |
-| China-North Europe Link (CNL) | Shenzhen → Hamburg | 24,000 TEU |
-| Middle East Gateway (MEG) | Jebel Ali → Singapore | 15,000 TEU |
-| North Atlantic Corridor (NAC) | Rotterdam → New York | 14,000 TEU |
-| Japan Transpacific (JTX) | Yokohama → Long Beach | 14,000 TEU |
-| China Coastal Relay (CCR) | Ningbo → Singapore | 10,000 TEU Feeder |
+| Area | Technologies |
+|---|---|
+| **Frontend** | React 19, TypeScript, JavaScript (ES6+), HTML5, CSS3, Responsive Design, Micro-Frontends |
+| **State Management** | Zustand, Jotai, Redux, React Context |
+| **Backend & APIs** | Python, FastAPI, Node.js, Express, REST APIs, WebSockets |
+| **Database & ORM** | PostgreSQL, Supabase, SQLAlchemy, Alembic |
+| **AI & Real-Time** | LLM Integration, RAG (Retrieval-Augmented Generation) Workflows, JSON/Text Streaming Responses, WebSockets |
+| **Testing & CI/CD** | GitLab CI/CD, Unit Testing, ESLint, Prettier |
+| **Build & Orchestration** | pnpm workspaces, Turborepo, Next.js Multi-Zones |
+| **Aesthetics & Animations** | `motion/react` (React 19 compatible Framer Motion), Three.js, React Three Fiber (R3F), Drei, Glassmorphism, CSS Custom Properties |
 
 ---
 
-## Technical Stack
+## 💼 Professional Experience
 
-| Layer | Technology | Role |
-|-------|-----------|------|
-| **Framework** | Next.js 16.2.9 (App Router) | Server Components, API routes, Multi-Zones |
-| **UI** | React 19 + motion | Component rendering, animations |
-| **Styling** | Tailwind CSS v4 + CSS custom properties | Design system, theming |
-| **Data fetching** | TanStack React Query | Caching, deduplication, retry, refetch |
-| **HTTP** | Axios | API client with interceptors |
-| **Map** | Custom SVG Mercator projection | Zero-dependency world map |
-| **State** | React useState + React Query | Route selection, form state, server cache |
-| **Monorepo** | pnpm workspaces + Turborepo | Package management, build orchestration |
+### **Front-End Engineer** @ **AUI (Augmented Intelligence)**  
+*05/2024 – Present*
+*   **AI Integrations**: Designed and delivered AI-powered product features, integrating Large Language Model (LLM) capabilities including Retrieval-Augmented Generation (RAG) workflows and real-time conversational experiences.
+*   **Real-time Streaming**: Built responsive, real-time streaming interfaces using WebSockets for dynamic, instant UI updates.
+*   **Performance Engineering**: Refactored existing UI components using modern best practices, resulting in a **20% performance uplift** and **15% improvement** in Web Vitals metrics.
+*   **State & Code Architecture**: Optimized state management using Zustand and Jotai to enhance responsiveness, and architected modular component systems to support dynamic, AI-generated content.
+*   **AI-Assisted Workflows**: Leveraged AI-enabled development tools to accelerate delivery cycles while maintaining high code quality and test coverage.
 
-See [TECH_DETAILS.md](./TECH_DETAILS.md) for the full architecture deep-dive on Multi-Zones proxying, Turborepo pipelines, and TypeScript resolution.
+### **Fullstack Engineer (Front-End Focus)** @ **Asal Technologies / Ride with Via**  
+*10/2021 – 05/2024*
+*   **Micro-Frontends**: Engineered scalable applications under a distributed Next.js Micro-Frontend architecture.
+*   **Shared Design Systems**: Created and maintained reusable React component libraries and UI modules shared across multiple product verticals.
+*   **Python Backend**: Developed and optimized backend APIs and microservices using Python, FastAPI, SQLAlchemy, and Alembic.
+*   **Databases**: Participated in API design, backend third-party integrations, and database migrations.
+*   **DevOps & CI/CD**: Authored GitLab CI/CD pipelines for automated testing, linting, and formatting to guarantee continuous code stability.
 
 ---
 
-## Project Structure
+## 🏗️ Repository Architecture
+
+This repository is structured as a **Turborepo** monorepo using **pnpm workspaces** to orchestrate independent microfrontends and shared libraries.
 
 ```
-apps/
-├── main-portfolio/          # Personal portfolio site (host)
-│   └── src/app/             # Single page with Hero, About, Projects, Contact, Architecture
+next-portfolio/
+├── apps/
+│   ├── main-portfolio/       # [Port 3000] Host Shell application (Hero, About, Contact, Architecture)
+│   ├── project-dashboard/    # [Port 3001] Maritime Logistics analytics dashboard (Microfrontend sub-app)
+│   └── design-system/        # [Port 3002] Shared Design tokens and component showcase app
 │
-└── project-dashboard/       # Maritime logistics dashboard (sub-app)
-    └── src/
-        ├── app/
-        │   ├── dashboard/           # Dashboard page
-        │   └── api/                 # Country & Ports API routes
-        ├── components/
-        │   ├── RouteMap.tsx         # SVG world map with routes
-        │   ├── VesselTelemetry.tsx  # Speed, ETA, progress
-        │   ├── PortAdvisory.tsx     # Weather at destination
-        │   ├── CustomsVerification.tsx  # Country profiles
-        │   ├── InvoicingPanel.tsx   # Freight cost calculator
-        │   └── SuccessModal.tsx     # Invoice confirmation
-        ├── hooks/                   # useWeather, useCountry, useExchangeRates
-        ├── services/                # Axios client + API functions
-        ├── lib/                     # Port data, map projection
-        └── constants/               # Routes, mock data fallbacks
-
-packages/
-└── ui/                     # Shared design system (Button, Card, Header, FadeIn, 3D Blob, PDF viewer)
+├── packages/
+│   ├── ui/                   # Shared UI kit (Components, 3D Canvas, CSS variables, PDF viewer)
+│   └── tsconfig/             # Shared TypeScript compilation configurations
+│
+├── pnpm-workspace.yaml       # Workspace boundary mapping
+├── turbo.json                # Turborepo task pipeline configurations
+├── TECH_DETAILS.md           # In-depth architectural guide (Routing, Symlinking, Next Multi-Zones)
+└── AGENTS.md                 # Development constraints and best practices
 ```
 
 ---
 
-## Getting Started
+## ⚡ Next.js Multi-Zones Integration (Microfrontend Proxying)
 
+Instead of using Module Federation, this project utilizes **Next.js Multi-Zones** (proxy-level routing) to merge multiple independent applications under a single origin (`localhost:3000`).
+
+*   **The Shell Host (`apps/main-portfolio` on `:3000`)** handles core landing routes (`/`, `/about`, etc.) and acts as a reverse proxy for specific paths.
+*   **The Project Dashboard (`apps/project-dashboard` on `:3001`)** owns the `/dashboard` route. It sets `basePath: "/dashboard"` inside `next.config.ts`.
+*   **The Design System (`apps/design-system` on `:3002`)** owns the `/design-system` route. It sets `basePath: "/design-system"` inside `next.config.ts`.
+
+### Rewrite Proxy Rules
+When the host receives requests for `/dashboard` or `/design-system`, it proxies them downstream via internal rewrites configured in `apps/main-portfolio/next.config.ts`:
+
+```typescript
+// apps/main-portfolio/next.config.ts
+async rewrites() {
+  return [
+    {
+      source: "/dashboard",
+      destination: "http://localhost:3001/dashboard",
+    },
+    {
+      source: "/dashboard/:path*",
+      destination: "http://localhost:3001/dashboard/:path*",
+    },
+    {
+      source: "/design-system",
+      destination: "http://localhost:3002/design-system",
+    },
+    {
+      source: "/design-system/:path*",
+      destination: "http://localhost:3002/design-system/:path*",
+    },
+  ];
+}
+```
+
+This configuration allows individual teams to build, deploy, and maintain sub-applications independently, while the user experiences a cohesive, single-page application.
+
+---
+
+## 📦 Package Dependency Resolution
+
+*   **Pnpm Linking**: Shared packages (like `@portfolio/ui`) are declared in application `package.json` files as `"@portfolio/ui": "workspace:*"`. pnpm sets up symlinks pointing directly to `packages/ui`, enabling instant hot-reloading when modifying components.
+*   **Turborepo Build Pipeline**: Tasks in `turbo.json` enforce topological build order (e.g., builds packages first before building applications) and use content hashing to cache build artifacts.
+
+---
+
+## 🚀 Getting Started
+
+To spin up the entire monorepo locally, follow these steps:
+
+### Prerequisites
+Make sure you have Node.js and **pnpm** globally installed:
 ```bash
-pnpm install
-pnpm dev        # Starts both apps (host on :3000, dashboard on :3001)
-pnpm run build  # Production build with Turborepo caching
+corepack enable pnpm
 ```
 
-The dashboard is available at **`http://localhost:3000/dashboard`** — the host proxies all `/dashboard` requests to the sub-app.
+### Installation & Development
+1.  **Clone the repository**
+2.  **Install dependencies** at the root:
+    ```bash
+    pnpm install
+    ```
+3.  **Start all microfrontend servers** simultaneously:
+    ```bash
+    pnpm dev
+    ```
 
-Environment variables for external APIs (see `apps/project-dashboard/.env.local`):
+Once running, you can access the projects under the single Host port:
+*   **Host Site**: `http://localhost:3000`
+*   **Analytics Dashboard Sub-App**: `http://localhost:3000/dashboard` (proxied from port `3001`)
+*   **Interactive Design System**: `http://localhost:3000/design-system` (proxied from port `3002`)
 
-```env
-NEXT_PUBLIC_OPENWEATHER_API_KEY=your_key
-REST_COUNTRIES_API_KEY=your_key
+### Production Builds
+Build all applications for production (with caching optimization):
+```bash
+pnpm run build
 ```
 
 ---
 
-## Related Documents
+## 📑 Additional Documentation
 
-- [TECH_DETAILS.md](./TECH_DETAILS.md) — Multi-Zones proxying, Turborepo pipelines, TypeScript resolution, React 19 client boundaries
-- [AGENTS.md](./AGENTS.md) — Monorepo conventions for developer agents
+*   [TECH_DETAILS.md](./TECH_DETAILS.md) — Dive deeper into Multi-Zones request lifecycles, chunk prefix resolution, and symlinking.
+*   [AGENTS.md](./AGENTS.md) — Coding conventions, strict monorepo rules, and workspace configurations for developers and AI agents.
