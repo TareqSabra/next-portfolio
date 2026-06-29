@@ -35,3 +35,5 @@ data/visits.json
 .DS_Store
 Thumbs.db
 desktop.ini
+
+.vercel
