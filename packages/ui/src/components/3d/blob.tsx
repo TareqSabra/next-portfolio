@@ -10,7 +10,28 @@ import {
 
 import { COLORS } from "../../constants/colors";
 
-export const Blob = () => {
+const variants = {
+  pink: {
+    gradient: [COLORS.pinkPrimary, COLORS.pinkSecondary] as [string, string],
+    keyLight: COLORS.pinkSecondary,
+    fillLight: COLORS.neonBlue,
+  },
+  neon: {
+    gradient: [COLORS.neonBlue, COLORS.neonPurple] as [string, string],
+    keyLight: COLORS.neonBlue,
+    fillLight: COLORS.pinkSecondary,
+  },
+};
+
+interface BlobProps {
+  variant?: keyof typeof variants;
+  distort?: number;
+  speed?: number;
+}
+
+export const Blob = ({ variant = "pink", distort = 0.55, speed = 3 }: BlobProps) => {
+  const colors = variants[variant];
+
   return (
     <div
       style={{
@@ -24,17 +45,13 @@ export const Blob = () => {
     >
       <Canvas camera={{ position: [0, 0, 6] }}>
         <ambientLight intensity={1.8} />
-
-        {/* Pink key light matching the primary button gradient */}
-        <pointLight position={[10, 10, 10]} intensity={2.5} color={COLORS.pinkSecondary} />
-
-        {/* Neon blue fill light matching the background accent blue */}
-        <pointLight position={[-10, -10, -10]} intensity={2} color={COLORS.neonBlue} />
+        <pointLight position={[10, 10, 10]} intensity={2.5} color={colors.keyLight} />
+        <pointLight position={[-10, -10, -10]} intensity={2} color={colors.fillLight} />
         <Sphere args={[1, 100, 200]} scale={3}>
-          <MeshDistortMaterial attach="material" distort={0.55} speed={3}>
+          <MeshDistortMaterial attach="material" distort={distort} speed={speed}>
             <GradientTexture
               stops={[0, 1]}
-              colors={[COLORS.pinkPrimary, COLORS.pinkSecondary]}
+              colors={colors.gradient}
               size={1024}
             />
           </MeshDistortMaterial>

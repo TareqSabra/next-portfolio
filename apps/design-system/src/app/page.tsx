@@ -1,6 +1,7 @@
 "use client";
 
 import { TokenBar } from "../components/TokenBar";
+import { BlobPlayground } from "../components/playgrounds/BlobPlayground";
 import { ButtonPlayground } from "../components/playgrounds/ButtonPlayground";
 import { CardPlayground } from "../components/playgrounds/CardPlayground";
 import { FadeInPlayground } from "../components/playgrounds/FadeInPlayground";
@@ -58,12 +59,14 @@ export default function Playground() {
         }}
       >
         A catalogue of shared UI components — examine each specimen, toggle its
-        props, and copy the live usage.
+        props, and copy the live usage. Built with shadcn/ui, motion, React
+        Three Fiber, and Next.js 16.
       </p>
 
       <TokenBar />
 
       <div style={{ display: "flex", flexDirection: "column", gap: "28px" }}>
+        <BlobPlayground />
         <RouteMapPlayground />
         <ButtonPlayground />
         <CardPlayground />
