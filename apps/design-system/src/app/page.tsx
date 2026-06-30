@@ -54,7 +54,7 @@ export default function Playground() {
           fontSize: "0.95rem",
           lineHeight: 1.6,
           marginBottom: "40px",
-          maxWidth: "560px",
+          maxWidth: "100%",
           fontFamily: "var(--font-sans)",
         }}
       >
