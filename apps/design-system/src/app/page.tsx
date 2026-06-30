@@ -3,6 +3,7 @@
 import { TokenBar } from "../components/TokenBar";
 import { BlobPlayground } from "../components/playgrounds/BlobPlayground";
 import { ButtonPlayground } from "../components/playgrounds/ButtonPlayground";
+import { FlowPlayground } from "../components/playgrounds/FlowPlayground";
 import { CardPlayground } from "../components/playgrounds/CardPlayground";
 import { FadeInPlayground } from "../components/playgrounds/FadeInPlayground";
 import { RouteMapPlayground } from "../components/playgrounds/RouteMapPlayground";
@@ -67,6 +68,7 @@ export default function Playground() {
 
       <div style={{ display: "flex", flexDirection: "column", gap: "28px" }}>
         <BlobPlayground />
+        <FlowPlayground />
         <RouteMapPlayground />
         <ButtonPlayground />
         <CardPlayground />

@@ -7,5 +7,6 @@ export * from "./src/components/Card";
 export * from "./src/components/animated/FadeIn";
 export * from "./src/components/RouteMap";
 export * from "./src/components/ScrollIndicator";
+export * from "./src/components/Flow";
 export * from "./src/lib/projection";
 export * from "./src/lib/ports";
